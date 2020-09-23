@@ -22,8 +22,16 @@ class Square extends React.Component {
 }
 
 class Board extends React.Component {
+    //Board にコンストラクタを追加し、初期 state に 9 個の null が 9 個のマス目に対応する 9 個の null 値をセット
+    constructor(props) {
+        super(props);
+        this.state = {
+            squares: Array(9).fill(null),
+        };
+    }
     renderSquare(i) {
-        return <Square  value={i}/>;
+        //squares という配列は Board のコンストラクタで定義しているから、Board の renderSquare がそこから値を読み込む
+        return <Square  value={this.state.squares[i]}/>;
     }
 
     render() {
