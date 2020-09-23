@@ -3,19 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 
 class Square extends React.Component {
-    //コンストラクタを追加してstateを初期化
-    constructor(props) {
-        //JavaScript のクラスでは、サブクラスのコンストラクタを定義する際は常に super を呼ぶ必要がある
-        super(props);
-            this.state = {
-                value:null,
-            };
-        }
     render() {
         return (
             //クリックされた時に state の現在値を表示する
-            <button className="square" onClick={() =>this.setState({value:'X'})}>
-                {this.state.value}
+            <button className="square" onClick={() =>this.props.onClick()}>
+                {this.props.value}
             </button>
         );
     }
@@ -29,11 +21,21 @@ class Board extends React.Component {
             squares: Array(9).fill(null),
         };
     }
+
+    handleClick(i) {
+        const squares = this.state.squares.slice();
+        squares[i] = 'X';
+        this.setState({squares: squares});
+    }
     renderSquare(i) {
         //squares という配列は Board のコンストラクタで定義しているから、Board の renderSquare がそこから値を読み込む
-        return <Square  value={this.state.squares[i]}/>;
+        return (
+            <Square
+                value={this.state.squares[i]}
+                onClick={() => this.handleClick(i)}
+            />
+        );
     }
-
     render() {
         const status = 'Next player: X';
 
