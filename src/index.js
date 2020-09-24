@@ -17,7 +17,7 @@ function Square(props) {
 class Board extends React.Component {
 
     renderSquare(i) {
-        //squares という配列は Board のコンストラクタで定義しているから、Board の renderSquare がそこから値を読み込む
+        //Square の位置を onClick ハンドラに渡してどのマス目がクリックされたのかを伝える
         return (
             <Square
                 value={this.props.squares[i]}
@@ -48,7 +48,7 @@ class Board extends React.Component {
     }
 }
 
-//Gameは盤面とプレースホルダー
+//Gameは盤面履歴のプレースホルダー
 class Game extends React.Component {
     constructor(props) {
         super(props);
