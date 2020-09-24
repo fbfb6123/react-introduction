@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
+//Squareはマス目
 function Square(props) {
     return (
         <button className="square" onClick={props.onClick}>
@@ -10,6 +11,7 @@ function Square(props) {
     );
 }
 
+//Boardは盤面
 class Board extends React.Component {
 
     renderSquare(i) {
@@ -44,6 +46,7 @@ class Board extends React.Component {
     }
 }
 
+//Gameは盤面とプレースホルダー
 class Game extends React.Component {
     constructor(props) {
         super(props);
