@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 
 //Squareはマス目
+//SquareはBoardにクリックアクションを渡すだけの処理
 function Square(props) {
     return (
         <button className="square" onClick={props.onClick}>
@@ -12,6 +13,7 @@ function Square(props) {
 }
 
 //Boardは盤面
+//BoardはGameにsquaresのstate情報を渡す
 class Board extends React.Component {
 
     renderSquare(i) {
