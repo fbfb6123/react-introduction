@@ -62,6 +62,7 @@ class Game extends React.Component {
     }
 
     handleClick(i) {
+        //history
         const history = this.state.history.slice(0,
             this.state.stepNumber + 1);
         const current = history[history.length - 1];
@@ -79,6 +80,7 @@ class Game extends React.Component {
     }
 
     jumpTo(step) {
+        //stepNumberが更新されて、値が偶数だった場合にxIsNextをtrue('X')に設定。
         this.setState({
             stepNumber: step,
             xIsNext: (step % 2) === 0,
@@ -123,8 +125,7 @@ class Game extends React.Component {
     }
 }
 
-// ========================================
-
+//勝敗判定メソッド
 ReactDOM.render(
     <Game />,
     document.getElementById('root')
