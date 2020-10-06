@@ -9,9 +9,20 @@ export default class App extends Component {
     }
     render() {
         const name = this.state.name;
-        
+
         return (
-            <h1>Hello, {name}.</h1>
+            <div>
+            <h1>Hello, {name}!</h1>
+            <input
+                type="text"
+                value={name}
+                onChange={ e => {
+                    this.setState({
+                        name: e.target.value
+                    })
+                }}
+                />
+        </div>
         );
     }
 }
