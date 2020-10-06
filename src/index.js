@@ -1,3 +1,9 @@
+
+
+
+
+// 三目並べゲーム
+/*
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -149,4 +155,5 @@ function calculateWinner(squares) {
     }
     return null;
 }
+*/
 
