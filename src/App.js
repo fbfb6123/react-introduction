@@ -1,10 +1,21 @@
 import React, { Component } from 'react';
 
+class Name extends Component {
+    render () {
+        const name = this.props.name;
+
+        return (
+            <span style={{color: 'red'}}>{name}</span>
+        );
+    }
+}
+
+
 export default class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: 'James'
+            name: ''
         }
     }
     render() {
@@ -12,8 +23,8 @@ export default class App extends Component {
 
         return (
             <div>
-            <h1>Hello, {name}!</h1>
-            <input
+              <h1>Hello, <Name name={name} />!</h1>
+              <input
                 type="text"
                 value={name}
                 onChange={ e => {
