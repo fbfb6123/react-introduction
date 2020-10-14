@@ -25,14 +25,6 @@ function Square(props) {
 }
 
 class Board extends React.Component {
-    //stateを親（Bord）コンポーネントにリフトアップ
-    constructor(props) {
-        super(props);
-        this.state = {
-            squares: Array(9).fill(null),
-            xIsNext: true,
-        };
-    }
 
     handleClick(i) {
         const squares = this.state.squares.slice();
@@ -45,7 +37,7 @@ class Board extends React.Component {
 
     renderSquare(i) {
         return (
-        <Square value={this.state.squares[i]} onClick={() => this.handleClick(i)} />
+        <Square value={this.props.squares[i]} onClick={() => this.props.onClick(i)} />
     );
     }
 
@@ -82,6 +74,15 @@ class Board extends React.Component {
 }
 
 class Game extends React.Component {
+    //stateを親（Game）コンポーネントにリフトアップ
+    constructor(props) {
+        super(props);
+        this.state = {
+            squares: Array(9).fill(null),
+            xIsNext: true,
+        };
+    }
+
     render() {
         return (
             <div className="game">
@@ -95,6 +96,35 @@ class Game extends React.Component {
             </div>
         );
     }
+
+    history = [
+        // Before first move
+        {
+            squares: [
+                null, null, null,
+                null, null, null,
+                null, null, null,
+            ]
+        },
+        // After first move
+        {
+            squares: [
+                null, null, null,
+                null, 'X', null,
+                null, null, null,
+            ]
+        },
+        // After second move
+        {
+            squares: [
+                null, null, null,
+                null, 'X', null,
+                null, null, 'O',
+            ]
+        },
+        // ...
+    ]
+
 }
 
 function calculateWinner(squares) {
