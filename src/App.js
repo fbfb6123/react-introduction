@@ -3,6 +3,12 @@ import Rect from './Rect';
 import logo from './logo.svg';
 import './App.css';
 
+let data = {title:'Title',
+         message:'this is sample message!.'};
+
+//コンテキスストの追加
+const SampleeContext = React.createContext(data);
+
 class App extends Component
 
 export default App;
