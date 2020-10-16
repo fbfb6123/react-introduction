@@ -73,6 +73,15 @@ class Item extends Component {
         fontWeight:"bold",
         color:"red"
     }
+
+    render() {
+        return (
+            <li style={this.li}>
+                <span style={this.num}>[{this.props.number}] </span>
+                {this.props.value}
+            </li>
+        );
+    }
 }
 
 export default App;
