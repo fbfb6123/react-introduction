@@ -5,19 +5,17 @@ import './App.css';
 
 //複数コンポーネント
 class App extends Component {
-    data = [];
+    data = [
+        "This is list sample.",
+        "これはリストのサンプルです",
+        "配列をリストに変換します"
+    ];
 
     msgStyle = {
-        fontSize:"24pt",
+        fontSize:"20pt",
         color:"#900",
         margin:"20px 0px",
         padding: "5px",
-    }
-
-    area = {
-        width:"500px",
-        height:"500px",
-        border:"1px solid blue"
     }
 
     constructor(props) {
@@ -25,38 +23,31 @@ class App extends Component {
         this.state = {
             list:this.data
         };
-        this.doAction = this.doAction.bind(this);
     }
 
-    doAction(e) {
-        let x = e.pageX;
-        let y = e.pageY;
-        this.data.push({x:x, y:y});
-        this.setState({
-            list:this.data
-        });
-    }
 
-    draw(d) {
-        let s = {
-            position:"absolute",
-            left:(d.x - 25) + "px",
-            top:(d.y - 25) + "px",
-            width:"50px",
-            height:"50px",
-            backgroundColor:"#66f3",
-        };
-        return <div style={s}></div>
-    }
 
     render() {
         return <div>
             <h1>React</h1>
             <h2 style={this.msgStyle}>show rect.</h2>
-            <div style={this.area} onClick={this.doAction}>
-                {this.data.map((value)=> this.draw(value))}
-            </div>
-        </div>
+            <List title="サンプルリスト"　data={this.data} />
+            </div>;
+    }
+}
+
+class List extends Component {
+    number = 1;
+
+    title = {
+        fontSize:"20pt",
+        fontWeight:"bold",
+        color:"blue",
+    };
+
+    render() {
+        let data = this.props.data;
+        return ()
     }
 }
 
