@@ -14,6 +14,11 @@ class App extends Component {
         padding: "5px",
     }
 
+    inputStyle = {
+        fontSize:"12pt",
+        padding:"5px"
+    }
+
     constructor(props) {
         super(props);
         this.state = {
