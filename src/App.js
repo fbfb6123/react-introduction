@@ -24,19 +24,11 @@ class App extends Component {
         this.state = {
             message:'type your name:'
         };
-        this.doChange = this.doChange.bind(this);
-        this.doSubmit = this.doSubmit.bind(this);
+        this.doCheck = this.doCheck.bind(this);
     }
 
-    doChange(event) {
-        this.input = event.target.value;
-    }
-
-    doSubmit(event) {
-        this.setState({
-            message: 'Hello,' + this.input + '!!'
-        });
-        event.preventDefault();
+    doCheck(event) {
+        alert(event.target.value + "は長すぎます。（最大10文字以下）");
     }
 
 
@@ -44,43 +36,33 @@ class App extends Component {
         return <div>
             <h1>React</h1>
             <h2>{this.state.message}</h2>
-            <form onSubmit={this.doSubmit}>
-                <label>
-                    <span style={this.inputStyle}></span>Message:
-                    <input type="text" style={this.inputStyle}
-                           onChange={this.doChange}
-                           required pattern="[A-Za-z _,.]+" />
-                </label>
-                <input type="submit" style={this.inputStyle} value="Click" />
-            </form>
+            <Message maxlength="10" onCheck={this.doCheck} />
         </div>;
     }
 }
 
 class Message extends Component {
-    li = {
-        fontSize:"16pt",
-        color:"#06",
-        margin:"0px",
-        padding: "0px",
+    inputStyle = {
+        fontSize:"12pt",
+        padding:"5px"
+    }
+
+    constructor(props) {
+        super(props);
+        this.doChange = this.doChange.bind(this);
+    }
+
+    doChange(e) {
+        if (e.target.value.length > this.props.maxlength){
+            this.props.onCheck(e);
+            e.target.value =
+                e.target.value.substr(0,this.props.maxlength);
+        }
     }
 
     render() {
-        let content = this.props.children;
-        let arr = content.split('。');
-        let arr2 = [];
-        for(let i = 0;i < arr.length;i++) {
-            if (arr[i].trim() !==''){
-                arr2.push(arr[i]);
-            }
-        }
-        let list = arr2.map((value,key)=>(
-            <li style={this.li} key={key}>{value}.</li>)
-        );
-        return <div>
-            <h2>{this.props.title}</h2>
-            <ol>{list}</ol>
-        </div>
+        return <input type="text" style={this.inputStyle}
+                      onChange={this.doChange} />
     }
 }
 
