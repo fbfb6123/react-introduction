@@ -5,11 +5,7 @@ import './App.css';
 
 //複数コンポーネント
 class App extends Component {
-    data = [
-        "This is list sample.",
-        "これはリストのサンプルです",
-        "配列をリストに変換します"
-    ];
+    input = '';
 
     msgStyle = {
         fontSize:"20pt",
@@ -21,10 +17,22 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            list:this.data
+            message:'type your name:'
         };
+        this.doChange = this.doChange.bind(this);
+        this.doSubmit = this.doSubmit.bind(this);
     }
 
+    doChange(event) {
+        this.input = event.target.value;
+    }
+
+    doSubmit(event) {
+        this.setState({
+            message: 'Hello,' + this.input + '!!'
+        });
+        event.preventDefault();
+    }
 
 
     render() {
