@@ -43,11 +43,15 @@ class App extends Component {
     render() {
         return <div>
             <h1>React</h1>
-            <Message title="Children!">
-                これはコンポーネント内のコンテンツです。
-                まるでテキストを分割し、リストにして表示します。
-                改行は必要ありません。
-            </Message>
+            <h2>{this.state.message}</h2>
+            <form onSubmit={this.doSubmit}>
+                <label>
+                    <span style={this.inputStyle}></span>Message:
+                    <input type="text" style={this.inputStyle}
+                           onChange={this.doChange} />
+                </label>
+                <input type="submit" style={this.inputStyle} value="Click" />
+            </form>
         </div>;
     }
 }
