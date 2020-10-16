@@ -47,7 +47,31 @@ class List extends Component {
 
     render() {
         let data = this.props.data;
-        return ()
+        return (
+            <div>
+                <p style={this.title}>{this.props.title}</p>
+                  <ul>
+                      {data.map((item)=>
+                        <Item number={this.number++} value={item}
+                          key={this.number} />
+                          )}
+                  </ul>
+            </div>
+        );
+    }
+}
+
+class Item extends Component {
+    li = {
+        listStyleType:"square",
+        fontSize:"16pt",
+        color:"#06",
+        margin:"0px",
+        padding: "0px",
+    }
+    num = {
+        fontWeight:"bold",
+        color:"red"
     }
 }
 
