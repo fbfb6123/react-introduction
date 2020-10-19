@@ -15,6 +15,12 @@ class AddForm extends Component {
         padding: "2px 10px"
     }
 
+    message = {
+        fontSize:"16pt",
+        color:"#006",
+        margin:"5px 10px"
+    }
+
     constructor(props) {
         super(props);
         this.state = {
@@ -42,7 +48,7 @@ class AddForm extends Component {
     render(){
         return (
             <div>
-                
+
                 <p style={this.message}>{this.props.message}</p>
                 <form onSubmit={this.doAction}>
                     <input type="text" size="40" onChange={this.doChange}

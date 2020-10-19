@@ -4,8 +4,8 @@ import logo from './logo.svg';
 import './App.css';
 import Memo from './memo/Memo';
 import AddForm from './memo/AddForm';
-import FindForm from './memo/FindForm';
-import DelForm from './memo/DelForm';
+/*import FindForm from './memo/FindForm';
+import DelForm from './memo/DelForm';*/
 
 
 //Appのコンポーネント
@@ -22,8 +22,8 @@ class App extends Component {
                 <AddForm />
                 <hr />
                 <table><tbody><tr>
-                    <td style={this.td}><FindForm /></td>
-                    <td style={this.td}><DelForm /></td>
+                    {/*<td style={this.td}><FindForm /></td>
+                    <td style={this.td}><DelForm /></td>*/}
                 </tr></tbody></table>
                 <Memo />
             </div>
