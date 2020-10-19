@@ -49,7 +49,10 @@ class DelForm extends Component {
             <div>
                 <form onSubmit={this.doAction}>
                     <select onChange={this.doChange}
-                      defaultValue="-1" style={this.btn} value="Del" />
+                      defaultValue="-1" style={this.input}>
+                        {items}
+                    </select>
+                    <input type="submit" style={this.btn} value="Del"/>
                 </form>
             </div>
         );
