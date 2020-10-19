@@ -1,61 +1,88 @@
 import React, { Component } from 'react';
 import Rect from './Rect';
+import { connect } from 'react-redux';
 import logo from './logo.svg';
 import './App.css';
 
-let data = {title:'Title',
-         message:'this is sample message.'};
+//ステートのマッピング
+function mappingState(state) {
+    return state;
+}
 
-//コンテキスストの追加
-const SampleContext = React.createContext(data);
-
+//Appのコンポーネント
 class App extends Component {
-    newdata = {title:'新しいタイトル',
-        message:'これはプロバイダーで用意した新しいメッセージ'};
+
+    constructor(props) {
+        super(props);
+    }
 
     render() {
         return (
             <div>
-                <h1>Context</h1>
-                <Title />
+                <h1>Redux</h1>
                 <Message />
-                <SampleContext.Provider value={this.newdata}>
-                    <Title />
-                    <Message />
-                </SampleContext.Provider>
-                <Title />
-                <Message />
+                <Button />
             </div>
         );
     }
 }
 
+//ストアのコネクト
+App = connect() (App);
 
-class Title extends Component {
-    static contextType = SampleContext;
-
-    render() {
-        return (
-            <div>
-                <h2>{this.context.title}</h2>
-            </div>
-        );
-    }
-}
-
+//メッセージの表示コンポーネント
 class Message extends Component {
-    static contextType = SampleContext;
+    style = {
+        fontSize:"20pt",
+        padding:"20px 5px"
+    }
 
     render(){
         return (
-            <div>
-                <p>{this.context.message}</p>
-            </div>
+            <p style={this.style}>
+                {this.props.message}:{this.props.counter}
+            </p>
         );
     }
 }
-export default App;
 
+//ストアのコネクト
+//mappingStateでMessegeのコンポーネントで利用するステート(これで上のpropsの中に値が組み込まれている)
+Message = connect(mappingState) (Message);
+
+//ボタン表示のコンポーネント
+class Button extends Component {
+    style = {
+        fontSize:"16pt",
+        padding:"5px 10px"
+    }
+
+    constructor(props){
+        super(props);
+        this.doAction = this.doAction.bind(this);
+    }
+
+    //ボタンクリックでディスパッチを実行
+    doAction(e) {
+        if (e.shiftKey) {
+            this.props.dispatch({ type:'DECREMENT' });
+        } else {
+            this.props.dispatch ({ type:'INCREMENT' });
+        }
+    }
+
+    render() {
+        return (
+            <button style={this.style}
+                    onClick={this.doAction}>Click</button>
+        );
+    }
+}
+
+//ストアのコネクト
+Button = connect()(Button);
+
+export default App;
 
 /*//メッセージ非同期表示
 import React, { Component } from 'react';
