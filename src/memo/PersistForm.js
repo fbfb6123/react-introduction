@@ -23,7 +23,7 @@ class PersistForm extends Component {
     doChange(e){
         let f = e.target.checked;
         this.setState({
-            cheak: f ? 'on' : ''
+            check: f ? 'on' : ''
         });
         if(f){
             pstore.persist();
