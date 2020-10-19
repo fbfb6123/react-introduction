@@ -41,3 +41,61 @@ function addReduce(state, action) {
         fdata:[]
     };
 }
+
+// メモ検索のレデュース処理
+function findReduce(state, action) {
+    let f = action.find;
+    let fdata = [];
+    state.data.forEach((value)=>{
+        if (value.message.indexOF(f) >= 0) {
+            fdata.push(value);
+        }
+    });
+    return {
+        data:state.data,
+        message:'find "' + f + '":',
+        model:'find',
+        fdata:fdata
+    };
+}
+
+//メモ削除のレデュース処理
+function deleteReduce(state, action) {
+    let newdata = state.data.slice();
+    newdata.splice(action.index, 1);
+    return {
+        data:newdata,
+        message:'delete"' + action.index + '":',
+        model:'delete',
+        fdata:[]
+    }
+}
+
+//アクションクリエーター
+
+//メモ追加のアクション
+export function addMemo(text) {
+    return {
+        type: 'ADD',
+        message:text
+    }
+}
+
+//削除のアクション
+export  function deleteMemo(num) {
+    return {
+        type: 'DELETE',
+        index:num
+    }
+  }
+
+//　メモ検索のアクション
+export function findMemo(text) {
+    return {
+        type:'FIND',
+        find:text
+    }
+}
+
+//ストアを作成
+export default createStore(memoReducer);
