@@ -8,7 +8,7 @@ const initData = {
 };
 
 //レデューサー
-export  function memoReducer(state = initData, action) {
+export function memoReducer(state = initData, action) {
     switch(action.type) {
         case'ADD':
             return addReduce(state, action);
@@ -54,7 +54,7 @@ function findReduce(state, action) {
     return {
         data:state.data,
         message:'find "' + f + '":',
-        model:'find',
+        mode:'find',
         fdata:fdata
     };
 }
