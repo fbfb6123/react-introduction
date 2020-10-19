@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import './index.css';
 import App from './App';
-import MemoStore from './memo/Store'
-import * as serviceWorker from './serviceWorker';
+import MemoStore from './memo/Store';
+import * as serviceWorker from './serviceWorker'
 
 //表示をレンダリング
 ReactDOM.render(

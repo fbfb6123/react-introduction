@@ -3,6 +3,10 @@ import Rect from './Rect';
 import { connect } from 'react-redux';
 import logo from './logo.svg';
 import './App.css';
+import Memo from './memo/Memo';
+import AddFrom from './memo/AddForm';
+import FindFrom from './memo/FindForm';
+import DelForm from './memo/DelForm';
 
 //ステートのマッピング
 function mappingState(state) {
