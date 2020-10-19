@@ -1,8 +1,8 @@
-import React, {Component } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import  { addMemo} from './Store';
+import  { addMemo } from './Store';
 
-class AddForm extends  Component {
+class AddForm extends Component {
     input = {
         fontSize: "16pt",
         color: "#006",
@@ -26,7 +26,7 @@ class AddForm extends  Component {
 
     doChange(e) {
         this.setState({
-            message: e.target.varue
+            message: e.target.value
         });
     }
 
@@ -39,14 +39,10 @@ class AddForm extends  Component {
         });
     }
 
-    render() {
+    render(){
         return (
             <div>
-                message = {
-                fontSize:"16pt",
-                color:"#006",
-                margin:"5px 10px"
-            }
+                
                 <p style={this.message}>{this.props.message}</p>
                 <form onSubmit={this.doAction}>
                     <input type="text" size="40" onChange={this.doChange}
@@ -56,5 +52,5 @@ class AddForm extends  Component {
             </div>
         );
     }
-}export  default connect((state)=>state)(Addform);
 }
+export  default connect((state)=>state)(AddForm);

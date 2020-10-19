@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import Rect from './Rect';
 import { connect } from 'react-redux';
 import logo from './logo.svg';
 import './App.css';
 import Memo from './memo/Memo';
-import AddFrom from './memo/AddForm';
-import FindFrom from './memo/FindForm';
+import AddForm from './memo/AddForm';
+import FindForm from './memo/FindForm';
 import DelForm from './memo/DelForm';
 
 
